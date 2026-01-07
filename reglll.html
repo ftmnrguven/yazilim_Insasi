@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FemCycle - Regl Takip Uygulaması</title>
+
+    <style>
+        /* ---------------------- GLOBAL ---------------------- */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #fff0f6;
+        }
+        * {
+            transition: .3s;
+        }
+
+        /* ---------------------- HEADER ---------------------- */
+        header {
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff7bbf, #ff4fa3);
+            color: white;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0px 4px 30px #ffb8da;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin: 0;
+        }
+        header p {
+            margin-top: 8px;
+            font-size: 18px;
+        }
+
+        /* ---------------------- NAV ---------------------- */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        nav a {
+            font-weight: bold;
+            color: #e63b8a;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #b8266a;
+        }
+
+        /* ---------------------- SECTIONS ---------------------- */
+        section {
+            display: none;
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #ffd8e8;
+        }
+
+        h2 {
+            color: #e63b8a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* ---------------------- HERO ---------------------- */
+        .hero {
+            text-align: center;
+            animation: fadeIn 1.2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            color: #e63b8a;
+        }
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* ---------------------- CARDS ---------------------- */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: #ffe1f0;
+            padding: 20px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 4px 12px #ffcee4;
+            animation: pop 0.7s;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .card:hover {
+            background: #ffcae6;
+            transform: translateY(-5px);
+        }
+
+        /* ---------------------- FAQ ---------------------- */
+        details {
+            padding: 15px;
+            border-radius: 15px;
+            background: #ffe7f2;
+            margin-bottom: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px #ffd3e6;
+        }
+
+        summary {
+            font-weight: 600;
+        }
+
+        /* ---------------------- CONTACT ---------------------- */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #e7a2bf;
+            margin-top: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            background: #e63b8a;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #c12e72;
+        }
+
+        /* ---------------------- FOOTER ---------------------- */
+        footer {
+            text-align: center;
+            background: #e63b8a;
+            padding: 15px;
+            color: white;
+            margin-top: 40px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>FemCycle</h1>
+        <p>Regl Döngünüzü Takip Etmenin En Akıllı Yolu</p>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a onclick="showPage('home')">Ana Sayfa</a>
+        <a onclick="showPage('features')">Özellikler</a>
+        <a onclick="showPage('faq')">S.S.S</a>
+        <a onclick="showPage('contact')">İletişim</a>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" style="display:block;">
+        <div class="hero">
+            <h1>Seni Anlayan Regl Takip Uygulaması</h1>
+            <p>Döngünü takip et, sağlığını yönet, kendine zaman ayır.</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">📅 Döngü Takibi</div>
+            <div class="card">✨ Akıllı Tahmin Motoru</div>
+            <div class="card">🩺 Sağlık Notları</div>
+            <div class="card">🔔 Hatırlatmalar</div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+        <h2>FemCycle Özellikleri</h2>
+        <p style="text-align:center;">Tüm regl deneyimini daha kolay, sağlıklı ve kontrollü hale getiriyoruz.</p>
+
+        <div class="cards">
+            <div class="card"><b>🔮 Döngü Analizi:</b> Verilerinize göre hesaplanan tahmin.</div>
+            <div class="card"><b>📊 Sağlık Trendleri:</b> Zaman içindeki değişimleri izleyin.</div>
+            <div class="card"><b>🔔 Hatırlatma Sistemi:</b> Yaklaşan dönem için uyarılar.</div>
+            <div class="card"><b>💗 Kişisel Notlar:</b> Ağrı, ruh hali ve diğer bilgiler.</div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2>Sıkça Sorulan Sorular</h2>
+
+        <details>
+            <summary>FemCycle nasıl çalışır?</summary>
+            <p>Girdiğiniz regl tarihlerini analiz ederek yaklaşan döngüleri tahmin eder.</p>
+        </details>
+
+        <details>
+            <summary>Uygulama güvenli mi?</summary>
+            <p>Evet, tüm bilgiler cihazda kalır ve üçüncü kişilerle paylaşılmaz.</p>
+        </details>
+
+        <details>
+            <summary>Ücretli özellik var mı?</summary>
+            <p>Hayır! Tamamen ücretsizdir.</p>
+        </details>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>İletişime Geçin</h2>
+        <p style="text-align:center;">Görüş, öneri ve sorularınız için bize yazabilirsiniz.</p>
+
+        <input type="text" placeholder="Adınız">
+        <input type="email" placeholder="E-posta">
+        <textarea rows="5" placeholder="Mesajınız"></textarea>
+        <button>Gönder</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 FemCycle – Cycle Tracking Experience
+    </footer>
+
+    <!-- PAGE SWITCH SCRIPT -->
+    <script>
+        function showPage(page) {
+            document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+            document.getElementById(page).style.display = "block";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+
+</body>
+</html>
